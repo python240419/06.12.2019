@@ -10,6 +10,9 @@ class Employee:
     def __str__(self):
         return f'{self.id} {self.name} {self.age} {self.address}'+\
                f'{self.salary}'
+    def __repr__(self):
+        return f'{self.id} {self.name} {self.age} {self.address}'+\
+               f'{self.salary} ***'
 
 def create_table(conn):
     try:
@@ -41,14 +44,14 @@ def read_all_rows(conn):
         # create employee object with fields
         # add into result
         e = Employee(row[0], row[1], row[2], row[3], row[4])
-        result.append(row)
+        result.append(e)
     return result
 
 def read_one_row(conn, id):
     # return employee instance with this id
     # id not found - return None
     row = conn.execute("SELECT * FROM COMPANY WHERE ID=...")  # cursor
-    
+
 def remove_row_by_id(conn, id):
     conn.execute("DELETE FROM COMPANY WHERE ID = ...")  # cursor
     conn.commit()
@@ -64,7 +67,6 @@ insert_into_table(conn, e1)
 insert_into_table(conn, e2)
 insert_into_table(conn, e3)
 employees = read_all_rows(conn)
-for e in employees:
-    print(e.name)
+print(employees)
 print("employee 1 name =",employees[0].name)
 conn.close()
