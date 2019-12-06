@@ -15,7 +15,7 @@ def create_table(conn):
     try:
         conn.execute("CREATE TABLE COMPANY("+\
                     "ID INTEGER PRIMARY KEY AUTOINCREMENT,"+\
-                    "NAME TEXT NOT NULL,"+\
+                    "NAME TEXT UNIQUE NOT NULL,"+\
                     "AGE INT NOT NULL,"+\
                     "ADDRESS CHAR(50),"+\
                     "SALARY REAL"");")
