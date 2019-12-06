@@ -38,9 +38,10 @@ def read_all_rows(conn):
     result = []
     for row in rows:
         print(row)
-        print("id",row[0])
         # create employee object with fields
         # add into result
+        e = Employee(row[0], row[1], row[2], row[3], row[4])
+        result.append(row)
     return result
 
 # create conn to existing db
@@ -48,6 +49,13 @@ def read_all_rows(conn):
 conn = sqlite3.connect('cars.db')
 create_table(conn)
 e1 = Employee(None, 'Allen', 25, 'Texas', 15000.00 )
+e2 = Employee(None, 'Teddy', 23, 'Norway', 20000.0)
+e3 = Employee(None, 'Mark', 25, 'Rich-Mond', 65000.0)
 insert_into_table(conn, e1)
-read_all_rows(conn)
+insert_into_table(conn, e2)
+insert_into_table(conn, e3)
+employees = read_all_rows(conn)
+for e in employees:
+    print(e.name)
+print("employee 1 name =",employees[0].name)
 conn.close()
