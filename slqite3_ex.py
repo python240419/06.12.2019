@@ -33,7 +33,15 @@ def insert_into_table(conn, e):
     except:
         print("cannot insert record")
 
-
+def read_all_rows(conn):
+    rows = conn.execute("SELECT * FROM COMPANY") # cursor
+    result = []
+    for row in rows:
+        print(row)
+        print("id",row[0])
+        # create employee object with fields
+        # add into result
+    return result
 
 # create conn to existing db
 # if db does not exist -- it will be created
@@ -41,4 +49,5 @@ conn = sqlite3.connect('cars.db')
 create_table(conn)
 e1 = Employee(None, 'Allen', 25, 'Texas', 15000.00 )
 insert_into_table(conn, e1)
+read_all_rows(conn)
 conn.close()
