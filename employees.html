@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FLASK</title>
+</head>
+<body>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>NAME</th>
+            <th>AGE</th>
+            <th>ADDRESS</th>
+            <th>SALARY</th>
+        </tr>
+        {% for e in list_emp: %}
+            <tr>
+                <td>{{ e.id }}</td>
+                <td>{{ e.name }}</td>
+                <td>{{ e.age }}</td>
+                <td>{{ e.address }}</td>
+                <td>{{ e.salary }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
