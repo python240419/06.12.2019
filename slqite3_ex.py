@@ -14,7 +14,7 @@ class Employee:
 def create_table(conn):
     try:
         conn.execute("CREATE TABLE COMPANY("+\
-                    "ID INT PRIMARY KEY NOT NULL,"+\
+                    "ID INTEGER PRIMARY KEY AUTOINCREMENT,"+\
                     "NAME TEXT NOT NULL,"+\
                     "AGE INT NOT NULL,"+\
                     "ADDRESS CHAR(50),"+\
@@ -25,19 +25,20 @@ def create_table(conn):
 
 def insert_into_table(conn, e):
     try:
-        conn.execute("INSERT INTO COMPANY (ID,NAME,AGE,ADDRESS,SALARY)"+\
-                    "VALUES ({}, '{}', {}, '{}', {} );"\
-                     .format(e.id, e.name, e.age, e.address, e.salary));
+        conn.execute("INSERT INTO COMPANY (NAME,AGE,ADDRESS,SALARY)"+\
+                    "VALUES ( '{}', {}, '{}', {} );"\
+                     .format(e.name, e.age, e.address, e.salary));
         conn.commit()
         print("record inserted...")
     except:
         print("cannot insert record")
 
 
+
 # create conn to existing db
 # if db does not exist -- it will be created
 conn = sqlite3.connect('cars.db')
 create_table(conn)
-e1 = Employee(1, 'Allen', 25, 'Texas', 15000.00 )
+e1 = Employee(None, 'Allen', 25, 'Texas', 15000.00 )
 insert_into_table(conn, e1)
 conn.close()
