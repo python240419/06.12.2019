@@ -11,8 +11,8 @@ class Employee:
         return f'{self.id} {self.name} {self.age} {self.address}'+\
                f'{self.salary}'
     def __repr__(self):
-        return f'{self.id} {self.name} {self.age} {self.address}'+\
-               f'{self.salary} ***'
+        return f'*{self.id} {self.name} {self.age} {self.address}'+\
+               f'{self.salary}'
 
 def create_table(conn):
     try:
