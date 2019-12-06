@@ -44,6 +44,15 @@ def read_all_rows(conn):
         result.append(row)
     return result
 
+def read_one_row(conn, id):
+    # return employee instance with this id
+    # id not found - return None
+    row = conn.execute("SELECT * FROM COMPANY WHERE ID=...")  # cursor
+    
+def remove_row_by_id(conn, id):
+    conn.execute("DELETE FROM COMPANY WHERE ID = ...")  # cursor
+    conn.commit()
+
 # create conn to existing db
 # if db does not exist -- it will be created
 conn = sqlite3.connect('cars.db')
